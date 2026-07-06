@@ -1,0 +1,61 @@
+{
+  "app_name": "Joya Roja – Mantra de la Riqueza",
+  "home": {
+    "start_button": "Iniciar",
+    "stop_button": "Detener"
+  },
+  "onboarding": {
+    "welcome_title": "Bienvenido a Joya Roja – Mantra de la Riqueza",
+    "step1_title": "Paso 1",
+    "step1_body": "Selecciona el mantra de tu preferencia (memorízalo).",
+    "step2_title": "Paso 2",
+    "step2_body": "Define la hora de tu recordatorio diario.",
+    "step3_title": "Paso 3",
+    "step3_body": "Define el tiempo de duración de tu concentración.",
+    "step4_title": "Paso 4",
+    "step4_body": "Empieza a manifestar riqueza.",
+    "next_button": "Siguiente",
+    "start_button": "Comenzar"
+  },
+  "settings": {
+    "title": "Configuración",
+    "notification_time": "Hora de la notificación diaria",
+    "duration_minutes": "Duración del mantra",
+    "duration_minutes_value": "{} min",
+    "theme": "Tema",
+    "theme_dark": "Oscuro",
+    "theme_light": "Claro",
+    "language": "Idioma",
+    "random_daily_mantra": "Mantra aleatorio cada día",
+    "random_daily_mantra_subtitle": "Si lo activas, la app elige un mantra distinto cada día en lugar del que selecciones.",
+    "view_tutorial": "Ver tutorial"
+  },
+  "mantras": {
+    "title": "Mantras",
+    "random_active_notice": "El modo aleatorio está activo. Desactívalo en Configuración para elegir un mantra fijo."
+  },
+  "notification": {
+    "title": "Es momento de tu mantra de riqueza",
+    "body": "Repite en voz alta: {}"
+  },
+  "mantra_1_title": "Mentalidad de abundancia",
+  "mantra_1_text": "Cada día pienso con claridad y confianza.\nLa abundancia comienza en mi mente.\nReconozco las oportunidades que me rodean.\nActúo con determinación y disciplina.\nMi esfuerzo genera resultados.\nEstoy construyendo una vida próspera.",
+  "mantra_2_title": "Prosperidad consciente",
+  "mantra_2_text": "Merezco crecer y prosperar.\nTomo decisiones inteligentes.\nAprendo de cada experiencia.\nMi trabajo tiene valor.\nLa prosperidad llega mediante la constancia.\nCada día avanzo hacia mis objetivos.",
+  "mantra_3_title": "Gratitud y crecimiento",
+  "mantra_3_text": "Agradezco todo lo que tengo.\nValoro cada oportunidad.\nMi gratitud fortalece mi visión.\nEstoy preparado para crecer.\nMi futuro se construye hoy.\nLa abundancia acompaña mi esfuerzo.",
+  "mantra_4_title": "Confianza",
+  "mantra_4_text": "Confío en mis capacidades.\nSupero los desafíos con serenidad.\nCada paso me hace más fuerte.\nTransformo los obstáculos en oportunidades.\nMi disciplina abre nuevos caminos.\nSoy creador de mi propio progreso.",
+  "mantra_5_title": "Acción",
+  "mantra_5_text": "Actúo hoy.\nNo espero el momento perfecto.\nCada pequeña acción cuenta.\nMi constancia genera resultados.\nEl éxito es consecuencia de mis hábitos.\nAvanzo con decisión.",
+  "mantra_6_title": "Enfoque",
+  "mantra_6_text": "Mi mente permanece enfocada.\nEvito las distracciones.\nDedico mi energía a lo importante.\nCada decisión fortalece mi futuro.\nLa disciplina multiplica mis oportunidades.\nHoy doy lo mejor de mí.",
+  "mantra_7_title": "Valor personal",
+  "mantra_7_text": "Mi conocimiento tiene valor.\nMis habilidades crecen cada día.\nSoy capaz de alcanzar grandes metas.\nConfío en mi preparación.\nCreo oportunidades con creatividad.\nLa prosperidad acompaña mi desarrollo.",
+  "mantra_8_title": "Éxito",
+  "mantra_8_text": "El éxito es un camino.\nDisfruto aprender y mejorar.\nPersevero incluso ante las dificultades.\nCada experiencia me fortalece.\nMi compromiso produce resultados.\nEstoy construyendo una vida abundante.",
+  "mantra_9_title": "Prosperidad financiera",
+  "mantra_9_text": "Administro mis recursos con sabiduría.\nGasto con responsabilidad.\nAhorro con propósito.\nInvierto en mi crecimiento.\nMis decisiones fortalecen mi estabilidad.\nLa prosperidad nace de buenos hábitos.",
+  "mantra_10_title": "Abundancia diaria",
+  "mantra_10_text": "Hoy elijo pensar en grande.\nMi actitud abre nuevas posibilidades.\nMi esfuerzo tiene propósito.\nAprovecho cada oportunidad para crecer.\nLa abundancia comienza con mis acciones.\nCada día construyo un mejor futuro."
+}

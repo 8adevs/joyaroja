@@ -1,0 +1,61 @@
+{
+  "app_name": "Red Gem – Wealth Mantra",
+  "home": {
+    "start_button": "Begin",
+    "stop_button": "Stop"
+  },
+  "onboarding": {
+    "welcome_title": "Welcome to Red Gem – Wealth Mantra",
+    "step1_title": "Step 1",
+    "step1_body": "Choose your preferred mantra (memorize it).",
+    "step2_title": "Step 2",
+    "step2_body": "Set the time for your daily reminder.",
+    "step3_title": "Step 3",
+    "step3_body": "Set the duration of your focus session.",
+    "step4_title": "Step 4",
+    "step4_body": "Start manifesting wealth.",
+    "next_button": "Next",
+    "start_button": "Get started"
+  },
+  "settings": {
+    "title": "Settings",
+    "notification_time": "Daily reminder time",
+    "duration_minutes": "Mantra duration",
+    "duration_minutes_value": "{} min",
+    "theme": "Theme",
+    "theme_dark": "Dark",
+    "theme_light": "Light",
+    "language": "Language",
+    "random_daily_mantra": "Random mantra every day",
+    "random_daily_mantra_subtitle": "When enabled, the app picks a different mantra each day instead of your selected one.",
+    "view_tutorial": "View tutorial"
+  },
+  "mantras": {
+    "title": "Mantras",
+    "random_active_notice": "Random mode is active. Turn it off in Settings to choose a fixed mantra."
+  },
+  "notification": {
+    "title": "Time for your wealth mantra",
+    "body": "Say out loud: {}"
+  },
+  "mantra_1_title": "Abundance mindset",
+  "mantra_1_text": "Every day I think with clarity and confidence.\nAbundance begins in my mind.\nI recognize the opportunities around me.\nI act with determination and discipline.\nMy effort produces results.\nI am building a prosperous life.",
+  "mantra_2_title": "Conscious prosperity",
+  "mantra_2_text": "I deserve to grow and prosper.\nI make intelligent decisions.\nI learn from every experience.\nMy work has value.\nProsperity comes through consistency.\nEvery day I move closer to my goals.",
+  "mantra_3_title": "Gratitude and growth",
+  "mantra_3_text": "I am grateful for everything I have.\nI value every opportunity.\nMy gratitude strengthens my vision.\nI am ready to grow.\nMy future is built today.\nAbundance follows my effort.",
+  "mantra_4_title": "Confidence",
+  "mantra_4_text": "I trust my abilities.\nI overcome challenges with serenity.\nEvery step makes me stronger.\nI turn obstacles into opportunities.\nMy discipline opens new paths.\nI am the creator of my own progress.",
+  "mantra_5_title": "Action",
+  "mantra_5_text": "I act today.\nI do not wait for the perfect moment.\nEvery small action counts.\nMy consistency produces results.\nSuccess is the result of my habits.\nI move forward with decision.",
+  "mantra_6_title": "Focus",
+  "mantra_6_text": "My mind stays focused.\nI avoid distractions.\nI devote my energy to what matters.\nEvery decision strengthens my future.\nDiscipline multiplies my opportunities.\nToday I give my best.",
+  "mantra_7_title": "Self-worth",
+  "mantra_7_text": "My knowledge has value.\nMy skills grow every day.\nI am capable of reaching great goals.\nI trust my preparation.\nI create opportunities with creativity.\nProsperity follows my growth.",
+  "mantra_8_title": "Success",
+  "mantra_8_text": "Success is a path.\nI enjoy learning and improving.\nI persevere even through difficulties.\nEvery experience makes me stronger.\nMy commitment produces results.\nI am building an abundant life.",
+  "mantra_9_title": "Financial prosperity",
+  "mantra_9_text": "I manage my resources wisely.\nI spend responsibly.\nI save with purpose.\nI invest in my growth.\nMy decisions strengthen my stability.\nProsperity is born from good habits.",
+  "mantra_10_title": "Daily abundance",
+  "mantra_10_text": "Today I choose to think big.\nMy attitude opens new possibilities.\nMy effort has a purpose.\nI seize every opportunity to grow.\nAbundance begins with my actions.\nEvery day I build a better future."
+}
