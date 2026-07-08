@@ -15,21 +15,56 @@ class SettingsScreen extends ConsumerWidget {
     int currentHour,
     int currentMinute,
   ) async {
+    // dialOnly removes the keyboard-input toggle button, which prevents the
+    // non-normalized BoxConstraints crash (minHeight > available height) that
+    // Flutter's time-picker keyboard mode triggers when the soft keyboard
+    // opens inside the already-constrained dialog.
     final picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: currentHour, minute: currentMinute),
+      initialEntryMode: TimePickerEntryMode.dialOnly,
     );
     if (picked == null) return;
+
     final repository = ref.read(mantraRepositoryProvider);
-    await ref.read(settingsProvider.notifier).setNotificationTime(
-          hour: picked.hour,
-          minute: picked.minute,
-          notificationTitle: 'notification.title'.tr(),
-          notificationBodyBuilder: (mantraId) {
-            final mantra = repository.byId(mantraId);
-            return 'notification.body'.tr(args: [mantra.titleKey!.tr()]);
-          },
-        );
+    try {
+      await ref.read(settingsProvider.notifier).setNotificationTime(
+            hour: picked.hour,
+            minute: picked.minute,
+            notificationTitle: 'notification.title'.tr(),
+            notificationBodyBuilder: (mantraId) {
+              final mantra = repository.byId(mantraId);
+              return 'notification.body'.tr(args: [mantra.titleKey!.tr()]);
+            },
+          );
+      if (!context.mounted) return;
+      final timeLabel =
+          '${picked.hour.toString().padLeft(2, '0')}:${picked.minute.toString().padLeft(2, '0')}';
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('settings.notification_scheduled'.tr(args: [timeLabel])),
+        backgroundColor: Colors.green.shade700,
+      ));
+    } catch (e) {
+      debugPrint('[Settings] notification scheduling error: $e');
+      if (!context.mounted) return;
+      final errStr = e.toString();
+      final isPermError = errStr.contains('exact_alarms_not_permitted');
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(isPermError
+            ? 'settings.notification_error_exact'.tr()
+            : '🔴 $errStr'),
+        backgroundColor: Colors.red.shade900,
+        duration: const Duration(seconds: 15),
+        action: isPermError
+            ? SnackBarAction(
+                label: 'settings.grant_permission'.tr(),
+                textColor: Colors.white,
+                onPressed: () =>
+                    ref.read(notificationServiceProvider).requestPermissions(),
+              )
+            : null,
+      ));
+    }
   }
 
   @override
@@ -69,8 +104,7 @@ class SettingsScreen extends ConsumerWidget {
             value: settings.durationMinutes.toDouble(),
             label: 'settings.duration_minutes_value'
                 .tr(args: ['${settings.durationMinutes}']),
-            onChanged: (value) =>
-                notifier.setDurationMinutes(value.round()),
+            onChanged: (value) => notifier.setDurationMinutes(value.round()),
           ),
           const Divider(height: 32),
           SwitchListTile(
@@ -82,8 +116,8 @@ class SettingsScreen extends ConsumerWidget {
                   : 'settings.theme_light'.tr(),
             ),
             value: settings.themeMode == ThemeMode.dark,
-            onChanged: (isDark) => notifier
-                .setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light),
+            onChanged: (isDark) =>
+                notifier.setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light),
           ),
           const Divider(height: 32),
           ListTile(

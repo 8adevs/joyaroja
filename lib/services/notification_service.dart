@@ -1,28 +1,23 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
   static const _dailyNotificationId = 1;
+  static const _migrationChannel =
+      MethodChannel('com.example.mantra_de_la_riqueza/migration');
 
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
-  /// Loads the timezone database, sets the device's local timezone, and
-  /// initialises the plugin.
-  ///
-  /// Timezone detection is wrapped in its own try/catch so that a failure
-  /// (e.g. MissingPluginException on old builds) falls back to UTC instead
-  /// of aborting the entire initialisation.
   Future<void> init() async {
-    // Load full IANA timezone database
     tz_data.initializeTimeZones();
 
-    // Detect device timezone — CRITICAL: without this tz.local = UTC and
-    // every scheduled notification fires at the wrong local time.
     try {
       final localTz = await FlutterTimezone.getLocalTimezone();
       tz.setLocalLocation(tz.getLocation(localTz));
@@ -31,29 +26,40 @@ class NotificationService {
       debugPrint('[Notif] timezone detection failed ($e) — using UTC fallback');
     }
 
-    // Wire up the notifications plugin
     await _plugin.initialize(
       const InitializationSettings(
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        android: AndroidInitializationSettings('ic_launcher_foreground'),
         iOS: DarwinInitializationSettings(),
       ),
     );
     debugPrint('[Notif] plugin initialised');
+
+    await _migrateNotificationCache();
   }
 
-  /// Requests runtime permissions for notifications.
-  ///
-  /// • POST_NOTIFICATIONS  (Android 13+): shows system dialog via
-  ///   permission_handler — the most reliable path for this permission.
-  /// • SCHEDULE_EXACT_ALARM (Android 12+): opens "Alarms & Reminders" in
-  ///   system Settings if the permission is not already granted.
-  /// • iOS: standard alert / badge / sound prompt.
+  // Clears stale notification data written by a pre-v18 plugin version.
+  // RuntimeTypeAdapterFactory (added in v18) requires a "type" field in every
+  // serialised StyleInformation; older data lacks it, so every call to
+  // cancel() or zonedSchedule() throws "Missing type parameter". Writing "[]"
+  // directly is the only way to reset the named SharedPreferences instance
+  // used internally by the plugin without a full app uninstall.
+  Future<void> _migrateNotificationCache() async {
+    const key = 'notif_cache_cleared_v18';
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool(key) == true) return;
+    try {
+      await _migrationChannel.invokeMethod<void>('clearNotificationCache');
+      await prefs.setBool(key, true);
+      debugPrint('[Notif] migration: cleared stale notification cache');
+    } catch (e) {
+      debugPrint('[Notif] migration error (will retry next launch): $e');
+    }
+  }
+
   Future<void> requestPermissions() async {
-    // POST_NOTIFICATIONS via permission_handler (reliable on all Android 13+ devices)
     final notifStatus = await Permission.notification.request();
     debugPrint('[Notif] POST_NOTIFICATIONS → $notifStatus');
 
-    // SCHEDULE_EXACT_ALARM via the plugin (opens system settings if denied)
     final android = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     if (android != null) {
@@ -64,45 +70,63 @@ class NotificationService {
       }
     }
 
-    // iOS
     await _plugin
         .resolvePlatformSpecificImplementation<
             IOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(alert: true, badge: true, sound: true);
   }
 
-  /// Cancels any existing daily reminder and schedules a new one at
-  /// [hour]:[minute] in the device's local timezone, repeating every day.
   Future<void> scheduleDaily({
     required int hour,
     required int minute,
     required String title,
     required String body,
   }) async {
-    await _plugin.cancel(_dailyNotificationId);
+    // cancel() can throw "Missing type parameter" when notification data on
+    // device was stored by an older plugin version. Swallow the error: the
+    // new zonedSchedule implicitly replaces the alarm via the same ID.
+    try {
+      await _plugin.cancel(_dailyNotificationId);
+    } catch (e) {
+      debugPrint('[Notif] cancel error (stale data): $e');
+    }
 
     final scheduledDate = _nextInstanceOf(hour, minute);
-    debugPrint('[Notif] scheduling for $hour:$minute → ${scheduledDate.toIso8601String()}');
+    debugPrint('[Notif] scheduling $hour:$minute → ${scheduledDate.toIso8601String()}');
 
-    await _plugin.zonedSchedule(
-      _dailyNotificationId,
-      title,
-      body,
-      scheduledDate,
-      const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'daily_mantra_channel',
-          'Recordatorio diario',
-          importance: Importance.high,
-          priority: Priority.high,
+    try {
+      await _plugin.zonedSchedule(
+        _dailyNotificationId,
+        title,
+        body,
+        scheduledDate,
+        const NotificationDetails(
+          android: AndroidNotificationDetails(
+            'daily_mantra_channel', 'Recordatorio diario',
+            importance: Importance.high, priority: Priority.high,
+          ),
+          iOS: DarwinNotificationDetails(),
         ),
-        iOS: DarwinNotificationDetails(),
-      ),
-      matchDateTimeComponents: DateTimeComponents.time,
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-    );
+        matchDateTimeComponents: DateTimeComponents.time,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+      );
+      debugPrint('[Notif] scheduled successfully');
+    } on PlatformException catch (e) {
+      final msg = e.message ?? '';
+      // RuntimeException wrapped by Flutter channel (code='error') when
+      // loadScheduledNotifications() fails on stale v<18 SharedPreferences data.
+      // setupAlarm() already ran before the cache step, so the alarm IS set in
+      // AlarmManager — the notification will fire. Only boot-recovery is affected.
+      if (e.code == 'error' &&
+          (msg.contains('type parameter') || msg.contains('cannot deserialize'))) {
+        debugPrint('[Notif] cache save failed — alarm was set: $msg');
+        return;
+      }
+      debugPrint('[Notif] zonedSchedule FAILED: $e');
+      rethrow;
+    }
   }
 
   tz.TZDateTime _nextInstanceOf(int hour, int minute) {

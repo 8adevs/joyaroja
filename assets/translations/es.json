@@ -28,7 +28,15 @@
     "language": "Idioma",
     "random_daily_mantra": "Mantra aleatorio cada día",
     "random_daily_mantra_subtitle": "Si lo activas, la app elige un mantra distinto cada día en lugar del que selecciones.",
-    "view_tutorial": "Ver tutorial"
+    "view_tutorial": "Ver tutorial",
+    "test_notification": "Probar notificación",
+    "test_notification_subtitle": "Envía una notificación ahora mismo para verificar que funcionan",
+    "test_notification_sent": "¡Notificación enviada! Revisa el panel de notificaciones.",
+    "notification_scheduled": "Recordatorio guardado para las {}",
+    "notification_error": "Error al guardar el recordatorio. Inténtalo de nuevo.",
+    "notification_error_exact": "Falta el permiso de alarmas exactas. Actívalo en los ajustes del sistema.",
+    "notification_error_post": "Falta el permiso de notificaciones. Actívalo en Ajustes > Aplicaciones.",
+    "grant_permission": "Dar permiso"
   },
   "mantras": {
     "title": "Mantras",
@@ -36,7 +44,8 @@
   },
   "notification": {
     "title": "Es momento de tu mantra de riqueza",
-    "body": "Repite en voz alta: {}"
+    "body": "Repite en voz alta: {}",
+    "test_body": "¡Las notificaciones funcionan correctamente!"
   },
   "mantra_1_title": "Mentalidad de abundancia",
   "mantra_1_text": "Cada día pienso con claridad y confianza.\nLa abundancia comienza en mi mente.\nReconozco las oportunidades que me rodean.\nActúo con determinación y disciplina.\nMi esfuerzo genera resultados.\nEstoy construyendo una vida próspera.",

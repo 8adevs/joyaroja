@@ -28,7 +28,15 @@
     "language": "Language",
     "random_daily_mantra": "Random mantra every day",
     "random_daily_mantra_subtitle": "When enabled, the app picks a different mantra each day instead of your selected one.",
-    "view_tutorial": "View tutorial"
+    "view_tutorial": "View tutorial",
+    "test_notification": "Test notification",
+    "test_notification_subtitle": "Send a notification right now to verify they work",
+    "test_notification_sent": "Notification sent! Check your notification panel.",
+    "notification_scheduled": "Reminder saved for {}",
+    "notification_error": "Error saving the reminder. Please try again.",
+    "notification_error_exact": "Exact alarm permission is missing. Enable it in system settings.",
+    "notification_error_post": "Notification permission is missing. Enable it in Settings > Apps.",
+    "grant_permission": "Grant permission"
   },
   "mantras": {
     "title": "Mantras",
@@ -36,7 +44,8 @@
   },
   "notification": {
     "title": "Time for your wealth mantra",
-    "body": "Say out loud: {}"
+    "body": "Say out loud: {}",
+    "test_body": "Notifications are working correctly!"
   },
   "mantra_1_title": "Abundance mindset",
   "mantra_1_text": "Every day I think with clarity and confidence.\nAbundance begins in my mind.\nI recognize the opportunities around me.\nI act with determination and discipline.\nMy effort produces results.\nI am building a prosperous life.",

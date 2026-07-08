@@ -64,8 +64,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
       debugPrint('[Splash] notification init error: $e');
     }
 
-    // Step 2: runtime permissions — always attempted even if init() failed,
-    // because permission_handler works independently of the plugin.
     try {
       await svc.requestPermissions();
     } catch (e) {
