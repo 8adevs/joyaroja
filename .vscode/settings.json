@@ -1,3 +1,9 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    // Flutter builds Android via `flutter build`; the Java extension's Gradle
+    // import spawns several Gradle/Kotlin daemons (~5 GB) and gets VS Code
+    // OOM-killed. Keep it off for this workspace.
+    "java.import.gradle.enabled": false,
+    "java.import.maven.enabled": false,
+    "java.configuration.updateBuildConfiguration": "disabled",
+    "java.import.exclusions": ["**/android/**", "**/build/**"]
 }

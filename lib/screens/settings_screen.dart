@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/mantra_provider.dart';
 import '../providers/settings_provider.dart';
 import 'onboarding_screen.dart';
+import 'privacy_screen.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -47,22 +48,9 @@ class SettingsScreen extends ConsumerWidget {
     } catch (e) {
       debugPrint('[Settings] notification scheduling error: $e');
       if (!context.mounted) return;
-      final errStr = e.toString();
-      final isPermError = errStr.contains('exact_alarms_not_permitted');
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(isPermError
-            ? 'settings.notification_error_exact'.tr()
-            : '🔴 $errStr'),
+        content: Text('settings.notification_error'.tr()),
         backgroundColor: Colors.red.shade900,
-        duration: const Duration(seconds: 15),
-        action: isPermError
-            ? SnackBarAction(
-                label: 'settings.grant_permission'.tr(),
-                textColor: Colors.white,
-                onPressed: () =>
-                    ref.read(notificationServiceProvider).requestPermissions(),
-              )
-            : null,
       ));
     }
   }
@@ -154,6 +142,14 @@ class SettingsScreen extends ConsumerWidget {
                 builder: (_) =>
                     const OnboardingScreen(markAsSeenOnFinish: false),
               ),
+            ),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text('privacy.title'.tr()),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const PrivacyScreen()),
             ),
           ),
         ],

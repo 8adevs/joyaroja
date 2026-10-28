@@ -13,7 +13,7 @@
     "step3_title": "Step 3",
     "step3_body": "Set the duration of your focus session.",
     "step4_title": "Step 4",
-    "step4_body": "Start manifesting wealth.",
+    "step4_body": "Start your daily focus and prosperity practice.",
     "next_button": "Next",
     "start_button": "Get started"
   },
@@ -34,9 +34,7 @@
     "test_notification_sent": "Notification sent! Check your notification panel.",
     "notification_scheduled": "Reminder saved for {}",
     "notification_error": "Error saving the reminder. Please try again.",
-    "notification_error_exact": "Exact alarm permission is missing. Enable it in system settings.",
-    "notification_error_post": "Notification permission is missing. Enable it in Settings > Apps.",
-    "grant_permission": "Grant permission"
+    "notification_error_post": "Notification permission is missing. Enable it in Settings > Apps."
   },
   "mantras": {
     "title": "Mantras",
@@ -66,5 +64,10 @@
   "mantra_9_title": "Financial prosperity",
   "mantra_9_text": "I manage my resources wisely.\nI spend responsibly.\nI save with purpose.\nI invest in my growth.\nMy decisions strengthen my stability.\nProsperity is born from good habits.",
   "mantra_10_title": "Daily abundance",
-  "mantra_10_text": "Today I choose to think big.\nMy attitude opens new possibilities.\nMy effort has a purpose.\nI seize every opportunity to grow.\nAbundance begins with my actions.\nEvery day I build a better future."
+  "mantra_10_text": "Today I choose to think big.\nMy attitude opens new possibilities.\nMy effort has a purpose.\nI seize every opportunity to grow.\nAbundance begins with my actions.\nEvery day I build a better future.",
+  "privacy": {
+    "title": "Privacy policy",
+    "updated": "Last updated: October 27, 2026",
+    "body": "Red Gem – Wealth Mantra (\"the app\") is developed by 8adevs. This policy explains how the app handles your information.\n\n1. Summary\nThe app does not collect, transmit, sell or share personal data. It requires no account, shows no ads, uses no analytics and does not connect to the internet.\n\n2. Information stored on your device\nTo work, the app only stores your preferences: reminder time, session duration, theme, language, selected mantra, random mantra mode and whether you have seen the tutorial. This data stays on your device only; the developer has no access to it.\n\n3. Permissions\n• Notifications: to send your daily reminder at the time you choose. You can turn them off at any time in Android settings.\n• Vibration: so the reminder can vibrate according to your phone's settings.\n• Run at startup: only to reschedule the reminder after your phone restarts.\n\n4. Data NOT collected\nName, email, location, contacts, photos, microphone, device identifiers, financial or health information, or usage history.\n\n5. Third parties\nThe app does not include third-party services that collect data. It is distributed through Google Play, which handles data under its own privacy policy (policies.google.com/privacy).\n\n6. Retention and deletion\nYour preferences remain on your device until you clear the app's data or uninstall it, at which point they are fully deleted. Since the developer stores no data, there is nothing to request or delete from any server.\n\n7. Security\nYour preferences never leave your device and are protected by Android's app sandbox.\n\n8. Children\nThe app is not directed at children under 13 and collects no data from any user.\n\n9. Changes\nIf this policy changes, the new version will be published at {url} with its update date. If a future feature needs to process data, you will be informed beforehand and asked for consent where required.\n\n10. Contact\nFor any questions about this policy: {email}"
+  }
 }

@@ -1,11 +1,11 @@
 {
-  "app_name": "Joya Roja – Mantra de la Riqueza",
+  "app_name": "Joya Roja – Mantra de Riqueza",
   "home": {
     "start_button": "Iniciar",
     "stop_button": "Detener"
   },
   "onboarding": {
-    "welcome_title": "Bienvenido a Joya Roja – Mantra de la Riqueza",
+    "welcome_title": "Bienvenido a Joya Roja – Mantra de Riqueza",
     "step1_title": "Paso 1",
     "step1_body": "Selecciona el mantra de tu preferencia (memorízalo).",
     "step2_title": "Paso 2",
@@ -13,7 +13,7 @@
     "step3_title": "Paso 3",
     "step3_body": "Define el tiempo de duración de tu concentración.",
     "step4_title": "Paso 4",
-    "step4_body": "Empieza a manifestar riqueza.",
+    "step4_body": "Empieza tu práctica diaria de enfoque y prosperidad.",
     "next_button": "Siguiente",
     "start_button": "Comenzar"
   },
@@ -34,9 +34,7 @@
     "test_notification_sent": "¡Notificación enviada! Revisa el panel de notificaciones.",
     "notification_scheduled": "Recordatorio guardado para las {}",
     "notification_error": "Error al guardar el recordatorio. Inténtalo de nuevo.",
-    "notification_error_exact": "Falta el permiso de alarmas exactas. Actívalo en los ajustes del sistema.",
-    "notification_error_post": "Falta el permiso de notificaciones. Actívalo en Ajustes > Aplicaciones.",
-    "grant_permission": "Dar permiso"
+    "notification_error_post": "Falta el permiso de notificaciones. Actívalo en Ajustes > Aplicaciones."
   },
   "mantras": {
     "title": "Mantras",
@@ -66,5 +64,10 @@
   "mantra_9_title": "Prosperidad financiera",
   "mantra_9_text": "Administro mis recursos con sabiduría.\nGasto con responsabilidad.\nAhorro con propósito.\nInvierto en mi crecimiento.\nMis decisiones fortalecen mi estabilidad.\nLa prosperidad nace de buenos hábitos.",
   "mantra_10_title": "Abundancia diaria",
-  "mantra_10_text": "Hoy elijo pensar en grande.\nMi actitud abre nuevas posibilidades.\nMi esfuerzo tiene propósito.\nAprovecho cada oportunidad para crecer.\nLa abundancia comienza con mis acciones.\nCada día construyo un mejor futuro."
+  "mantra_10_text": "Hoy elijo pensar en grande.\nMi actitud abre nuevas posibilidades.\nMi esfuerzo tiene propósito.\nAprovecho cada oportunidad para crecer.\nLa abundancia comienza con mis acciones.\nCada día construyo un mejor futuro.",
+  "privacy": {
+    "title": "Política de privacidad",
+    "updated": "Última actualización: 27 de octubre de 2026",
+    "body": "Joya Roja – Mantra de Riqueza (\"la aplicación\") es desarrollada por 8adevs. Esta política explica cómo la aplicación trata tu información.\n\n1. Resumen\nLa aplicación no recopila, no transmite, no vende ni comparte datos personales. No requiere cuenta, no muestra anuncios, no usa herramientas de analítica y no se conecta a internet.\n\n2. Información guardada en tu dispositivo\nPara funcionar, la aplicación guarda únicamente tus preferencias: hora del recordatorio, duración de la sesión, tema, idioma, mantra seleccionado, modo de mantra aleatorio y si ya viste el tutorial. Estos datos se almacenan solo en tu dispositivo; el desarrollador no tiene acceso a ellos.\n\n3. Permisos\n• Notificaciones: para enviarte el recordatorio diario a la hora que elijas. Puedes desactivarlas en cualquier momento desde los ajustes de Android.\n• Vibración: para que el recordatorio pueda vibrar según la configuración de tu teléfono.\n• Ejecutar al iniciar el dispositivo: solo para volver a programar el recordatorio después de reiniciar el teléfono.\n\n4. Datos que NO se recopilan\nNombre, correo, ubicación, contactos, fotos, micrófono, identificadores del dispositivo, información financiera, de salud ni historial de uso.\n\n5. Terceros\nLa aplicación no integra servicios de terceros que recopilen datos. La descarga se realiza a través de Google Play, que trata datos según su propia política de privacidad (policies.google.com/privacy).\n\n6. Conservación y eliminación\nTus preferencias permanecen en tu dispositivo hasta que borres los datos de la aplicación o la desinstales; en ese momento se eliminan por completo. Como el desarrollador no almacena ningún dato, no hay información que solicitar ni eliminar en servidores.\n\n7. Seguridad\nTus preferencias nunca salen de tu dispositivo y están protegidas por el aislamiento de aplicaciones de Android.\n\n8. Menores de edad\nLa aplicación no está dirigida a menores de 13 años y no recopila datos de ningún usuario.\n\n9. Cambios\nSi esta política cambia, la nueva versión se publicará en {url} con su fecha de actualización. Si alguna función futura requiere tratar datos, se informará antes y se pedirá tu consentimiento cuando corresponda.\n\n10. Contacto\nPara cualquier duda sobre esta política: {email}"
+  }
 }

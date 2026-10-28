@@ -1,4 +1,4 @@
-package com.example.mantra_de_la_riqueza
+package com.joyaroja
 
 import android.content.Context
 import io.flutter.embedding.android.FlutterActivity
@@ -10,7 +10,7 @@ class MainActivity : FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(
             flutterEngine.dartExecutor.binaryMessenger,
-            "com.example.mantra_de_la_riqueza/migration"
+            "com.joyaroja/migration"
         ).setMethodCallHandler { call, result ->
             if (call.method == "clearNotificationCache") {
                 // Resets the flutter_local_notifications SharedPreferences to a

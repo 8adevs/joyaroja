@@ -10,7 +10,7 @@ import 'package:timezone/timezone.dart' as tz;
 class NotificationService {
   static const _dailyNotificationId = 1;
   static const _migrationChannel =
-      MethodChannel('com.example.mantra_de_la_riqueza/migration');
+      MethodChannel('com.joyaroja/migration');
 
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
@@ -60,16 +60,6 @@ class NotificationService {
     final notifStatus = await Permission.notification.request();
     debugPrint('[Notif] POST_NOTIFICATIONS → $notifStatus');
 
-    final android = _plugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
-    if (android != null) {
-      final canExact = await android.canScheduleExactNotifications();
-      debugPrint('[Notif] canScheduleExactNotifications → $canExact');
-      if (canExact == false) {
-        await android.requestExactAlarmsPermission();
-      }
-    }
-
     await _plugin
         .resolvePlatformSpecificImplementation<
             IOSFlutterLocalNotificationsPlugin>()
@@ -108,7 +98,9 @@ class NotificationService {
           iOS: DarwinNotificationDetails(),
         ),
         matchDateTimeComponents: DateTimeComponents.time,
-        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        // Inexact on purpose: Play restricts exact alarms to alarm/calendar
+        // apps, and a daily mantra reminder tolerates a few minutes of drift.
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
       );

@@ -86,6 +86,9 @@ flutter:
     - assets/translations/
     - assets/audio/
     - assets/images/
+    # Bundled so google_fonts never fetches fonts over the network
+    # (the app declares no INTERNET permission and collects no data).
+    - assets/google_fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
