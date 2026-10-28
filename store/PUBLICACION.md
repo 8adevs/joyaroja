@@ -37,28 +37,22 @@ Crea la cuenta de Gmail `joyaroja.app@gmail.com` (ya está puesta en la app, la 
 
 ### 1.2 Política de privacidad en GitHub Pages (gratis)
 
-Los archivos ya están listos en `store/github-pages/`. Se usa una **organización** `8adevs` para que la URL no muestre tu nombre.
+Se publica como **sitio de proyecto** desde la carpeta `docs/` del repositorio público `8adevs/joyaroja`. No hace falta ningún repositorio extra.
 
-1. Entra en GitHub con tu cuenta → avatar → **Your organizations** → **New organization** → plan **Free**.
-   - Nombre: `8adevs`. Si está ocupado, elige otro y cámbialo en `lib/screens/privacy_screen.dart` (`kPrivacyPolicyUrl`).
-   - Email de contacto: `joyaroja.app@gmail.com`.
-2. Dentro de la organización: **New repository**.
-   - Nombre exacto: **`8adevs.github.io`**
-   - Visibilidad: **Public** (Pages gratis solo funciona con repos públicos).
-   - Marca "Add a README".
-3. **Add file → Upload files** → arrastra el **contenido** de `store/github-pages/` (`index.html` y la carpeta `joyaroja/`) → **Commit changes**.
-4. **Settings → Pages** → *Source: Deploy from a branch* → rama `main`, carpeta `/ (root)` → **Save**.
-5. Espera 1-2 minutos y abre en modo incógnito: **https://8adevs.github.io/joyaroja/privacy.html**
-6. Comprueba que carga sin iniciar sesión y que el email es el correcto.
+| Archivo | URL pública |
+|---|---|
+| `docs/index.html` | https://8adevs.github.io/joyaroja/ |
+| `docs/privacy.html` | **https://8adevs.github.io/joyaroja/privacy.html** ← la que va en Play Console y en la app |
 
-Alternativa por terminal (después del paso 2):
-```bash
-git clone git@github.com:8adevs/8adevs.github.io.git ~/8adevs.github.io
-cp -r store/github-pages/* ~/8adevs.github.io/
-cd ~/8adevs.github.io && git add . && git commit -m "Política de privacidad Joya Roja" && git push
-```
+1. Sube los cambios: `git push`
+2. En GitHub (sesión `8adevs`) → repositorio `joyaroja` → **Settings** → **Pages**.
+3. *Build and deployment* → **Source:** *Deploy from a branch* → **Branch:** `main`, carpeta **`/docs`** → **Save**.
+4. En la pestaña **Actions** espera a que "pages build and deployment" muestre el ✓ verde (de 1 a 10 minutos).
+5. Abre en modo incógnito https://8adevs.github.io/joyaroja/privacy.html
 
-La política cumple los requisitos de Google: está identificada como "Política de privacidad", nombra la app y al desarrollador e incluye contacto, datos tratados, permisos, terceros, conservación y eliminación, seguridad, menores y cambios. Además está en una URL pública que no es un PDF y está en ES y EN.
+⚠️ El repositorio tiene que seguir siendo **público**: en el plan gratuito, Pages no funciona con repositorios privados. Si algún día lo haces privado, la política dejará de estar accesible y Google puede retirar la app.
+
+Para editar la política más adelante, modifica `docs/privacy.html` (y el texto `privacy.body` de `assets/translations/*.json`, para que coincidan) y haz push.
 
 ### 1.3 Gráficos (ya generados en `store/graficos/`)
 
@@ -118,7 +112,7 @@ Es correcto porque los datos que se guardan solo en el dispositivo y nunca se en
 
 - Tipo: **Aplicación** · Categoría: **Estilo de vida**
 - Etiquetas: hasta 5 de las que proponga Google, relacionadas con hábitos y motivación.
-- Email: `joyaroja.app@gmail.com` (obligatorio) · Sitio web: `https://8adevs.github.io` · Teléfono: vacío.
+- Email: `joyaroja.app@gmail.com` (obligatorio) · Sitio web: `https://8adevs.github.io/joyaroja/` · Teléfono: vacío.
 
 ### 2.5 Ficha principal – Español (idioma predeterminado: es-419 o es-ES)
 
